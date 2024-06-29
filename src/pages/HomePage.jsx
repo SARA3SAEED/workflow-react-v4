@@ -90,19 +90,19 @@ export default function HomePage() {
             <a href="/">
                 <img className="w-[100px] h-[100px]" src={img5} alt=""/>
             </a>
-            <p className="max-w-md mx-auto mt-4  dark:text-gray-400  font-[600] text-4xl "> Manage any project, with TaskFlow</p>
+            <p className="max-w-md mx-auto mt-4    font-[600] text-4xl "> Manage any project, with TaskFlow</p>
             <div className="flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-center">
-                <button className="btn flex items-center justify-center order-1 w-full py-2 mt-3 text-sm tracking-wide capitalize transition-colors duration-300 transform border rounded-md sm:mx-2 sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-opacity-40 mx-3 my-4; bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
-                    <Link className="text-gray-700 dark:text-gray-200 lg:px-2 dark:hover:text-teal-600 w-[80px] hover:text-teal-600" to="/login">Login</Link>
+                <button className="btn flex items-center justify-center order-1 w-full py-2 mt-3 text-sm tracking-wide capitalize transition-colors duration-300 transform border rounded-md sm:mx-2 sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-opacity-40 mx-3 my-4; bg-gray-50 hover:bg-gray-100 ">
+                    <Link className="text-gray-700 lg:px-2  w-[80px] hover:text-teal-600" to="/login">Login</Link>
                 </button>
                 <button className="btn flex items-center justify-center order-1 w-full py-2 mt-3 text-sm tracking-wide capitalize transition-colors duration-300 transform border rounded-md sm:mx-2 sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-opacity-40 mx-3 my-4; bg-teal-600 text-white hover:bg-teal-700 focus:ring-blue-300">
-                    <Link className="text-gray-700 text-white dark:text-gray-200 lg:px-2" to="/signup">Sign up</Link>
+                    <Link className="text-gray-700 text-white  lg:px-2" to="/signup">Sign up</Link>
                 </button>
             </div>
 
             <p className=" p-5 mt-5 text-sm text-gray-500">© Copyright 2021. All Rights Reserved.</p>
         </div>
-        <hr className="my-10 border-gray-200 dark:border-gray-700" />
+        <hr className="my-10 border-gray-200 " />
     </div>
 
       </div>
