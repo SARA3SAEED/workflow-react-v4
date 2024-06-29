@@ -8,7 +8,7 @@ export default function Search() {
           href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css"
         />
 
-        <div className="lg:max-w-2xl mx-40 w-[60%] lg:mx-auto lg:mt-16  mx:42">
+        <div className="lg:max-w-2xl mx-40 my-10 w-[60%] lg:mx-auto lg:mt-16  mx:42">
             <form>
             <label
                 htmlFor="default-search"
