@@ -19,8 +19,8 @@ export default function HomePage() {
         <div className="hero bg-base-100 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
-              <h1 className="text-6xl px-8 m-2 font-[600]">Work Smartly With Endless Possibilities</h1>
-              <p className="pl-10 pr-20 font-[450]">
+              <h1 className="text-2xl font-[500] mt-14 lg:text-6xl px-8 lg:m-2 lg:font-[600]">Work Smartly With Endless Possibilities</h1>
+              <p className="pl-16 mt-5 lg:pl-10 pr-20 font-[450]">
                 Streamline collaboration, boost productivity, and achieve project success with our intuitive project management solution.
               </p>
               <a href="/signup" className=" mx-10 my-4 btn bg-teal-600 text-white py-2 px-4 rounded transition-colors duration-300 hover:bg-teal-700 bg-opacity-70">Get Started</a>
@@ -40,12 +40,12 @@ export default function HomePage() {
             <div className="text-center m-5 p-5 lg:text-left">
               <small className=" text-teal-600 font-bold">ORGANIZED</small>
               <h1 className="text-4xl  font-[600]">Intuitive Task Management</h1>
-              <p className=" font-[450]">
+              <p className=" mt-5  lg:pr-20 font-[450]">
                 Easily create, assign, and track tasks with our user-friendly interface. Stay organized and keep your team on the same page.
               </p>
             </div>
 
-            <img src={img2} className="m-5 w-[45%] shrink-0 shadow-xl" alt="Image 2" />
+            <img src={img2} className="m-5 w-[55%] lg:w-[45%]  shrink-0 shadow-xl" alt="Image 2" />
 
           </div>
         </div>
@@ -56,12 +56,12 @@ export default function HomePage() {
             <div className="text-center m-5 p-5 lg:text-left">
               <small className=" text-teal-600 font-bold">COLLABORATION</small>
               <h1 className="text-4xl  font-[600]">Collaborative Workspaces</h1>
-              <p className=" font-[450]">
+              <p className="mt-5 font-[450]">
                 Foster collaboration by creating dedicated workspaces for your projects. Share files, updates, and feedback in one central location.
               </p>
             </div>
 
-            <img src={img3} className="m- w-[45%] shrink-0 shadow-xl" alt="Image 3" />
+            <img src={img3} className="m- w-[55%] lg:w-[45%]  shrink-0 shadow-xl" alt="Image 3" />
           </div>
 
         </div>
@@ -72,12 +72,12 @@ export default function HomePage() {
             <div className="text-center m-5 p-5  lg:text-left">
               <small className=" text-teal-600 font-bold">VISIBILITY</small>
               <h1 className="text-4xl  font-[600]">Real-Time Progress Tracking</h1>
-              <p className=" font-[450]">
+              <p className="mt-5 font-[450]">
                 Monitor project progress in real-time with interactive dashboards. Identify bottlenecks and ensure projects stay on schedule.
               </p>
             </div>
 
-            <img src={img4} className="m-5 w-[35%] shrink-0 shadow-xl" alt="Image 4" />
+            <img src={img4} className="m-5 w-[55%] lg:w-[35%] shrink-0 shadow-xl" alt="Image 4" />
           </div>
 
         </div>
