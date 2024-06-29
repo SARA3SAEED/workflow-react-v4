@@ -10,7 +10,7 @@ export default function Dashboard() {
        
 
         <div className="">
-              <div class="max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5">
+              <div class="max-w-lg  my-10 bg-white rounded-lg shadow-md p-5 ml-16 lg:mx-auto">
                 <img class="w-32 h-32 rounded-full mx-auto" src="https://img.icons8.com/?size=160&id=QMuDJby5eC7X&format=png" alt="Profile picture" />
                 <h2 class="text-center text-2xl font-semibold mt-3">John Doe</h2>
                 <p class="text-center text-gray-600 mt-1">Software Engineer</p>
