@@ -9,7 +9,7 @@ export default function Card() {
     'Completed': 'text-green-600'
   }
   return (
- <div className="bg-white shadow-md rounded-3xl p-4 ml-24 mb-5 w-[40%]">        
+ <div className="bg-white shadow-md rounded-3xl p-4 ml-28 mb-5 w-[40%]">        
  <div className="flex-none lg:flex">
           <div className="h-full w-full lg:h-48 lg:w-48 lg:mb-0 mb-3">
          
