@@ -8,7 +8,7 @@ export default function EditDetails() {
     
     
         <Sidebar />
-        <div class="flex items-center justify-center p-12 ">
+        <div class="flex items-center justify-center p-12 p-5 ml-16 lg:mx-auto">
             <div class="mx-auto w-full max-w-[550px] p-9 shadow-md">
                 <form action="https://formbold.com/s/FORM_ID" method="POST">
                 <div class="mb-5">
