@@ -6,7 +6,7 @@ export default function Add() {
   return (
     <>
       <Sidebar />
-        <div class="flex items-center justify-center p-12 p-5 ml-20 lg:mx-auto">
+        <div class="flex items-center justify-center p-12 p-5 ml-28 mt-7 lg:mx-auto">
           <div class="mx-auto w-full max-w-[550px] p-9 shadow-md">
             <form action="https://formbold.com/s/FORM_ID" method="POST">
               <div class="mb-5">
