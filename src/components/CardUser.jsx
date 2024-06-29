@@ -4,8 +4,8 @@ export default function CardUser() {
   return (
     <div className="max-w-sm bg-white ml-40 shadow-lg rounded-lg overflow-hidden my-4">
       <img 
-        className="w-full h-56 object-cover object-center" 
         src="https://img.icons8.com/?size=160&id=QMuDJby5eC7X&format=png" 
+        className='w-32' 
         alt="avatar" 
       />
       <hr />
