@@ -52,6 +52,10 @@ export default function Router() {
             path: "/edit",
             element: <EditDetails />,
           },
+          {
+            path: "/edit/:id",
+            element: <EditDetails />,
+          },
       ]);
 
 
