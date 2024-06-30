@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function CardUser({ user }) {
+export default function CardUser({ user, onDelete, loggedInUserRole }) {
+  const isAdmin = loggedInUserRole === 'admin';
+
+  const handleDelete = () => {
+    // Call onDelete function passed from parent component
+    onDelete(user.id);
+  };
+
   return (
     <div className="lg:w-[30%] w-[50%] l max-w-sm bg-white ml-40 shadow-lg rounded-lg overflow-hidden my-4">
       <img 
@@ -11,7 +18,7 @@ export default function CardUser({ user }) {
       <hr />
       <div className="py-4 px-6">
         <h6 className="text-2xl font-semibold text-gray-800">{user.name}</h6>
-        <p>{user.jobTitle}</p>
+        <p className=' lg:h-28'>{user.jobTitle}</p>
         <hr />
         <div className="flex items-center mt-4 text-gray-700">
           <svg className="h-6 w-6 fill-current" viewBox="0 0 512 512">
@@ -19,6 +26,14 @@ export default function CardUser({ user }) {
           </svg>
           <h1 className="px-2 text-sm">{user.email}</h1>
         </div>
+        {isAdmin && (
+          <button
+            className="bg-red-500 ml-24 lg:ml-56 hover:bg-red-600 text-white py-2 px-4 rounded mt-2"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

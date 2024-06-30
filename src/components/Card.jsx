@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Card({ project }) {
+export default function Card({ project, handleProjectAction, handleDeleteProject }) {
   const Status = {
     'Pending': 'text-gray-600',
     'In Progress': 'text-blue-700',
@@ -66,10 +66,28 @@ export default function Card({ project }) {
               <button className="mb-2 md:mb-0 bg-white px-4 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2">
                 <Link to={`/details/${project.id}`}>Details</Link>
               </button>
+              {project.status === 'Pending' && (
+                <>
+                  <button
+                    className="mb-2 md:mb-0 bg-green-400 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-green-600"
+                    type="button"
+                    onClick={() => handleProjectAction(project.id, 'accept')}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="mb-2 md:mb-0 bg-red-400 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-red-600"
+                    type="button"
+                    onClick={() => handleProjectAction(project.id, 'reject')}
+                  >
+                    Reject
+                  </button>
+                </>
+              )}
               <button
                 className="mb-2 md:mb-0 bg-red-400 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-red-600"
                 type="button"
-                aria-label="like"
+                onClick={() => handleDeleteProject(project.id)}
               >
                 Delete
               </button>

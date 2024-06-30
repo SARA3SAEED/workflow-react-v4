@@ -10,7 +10,7 @@ import Dashbord from '../pages/Dashbord';
 import Add from '../pages/Add';
 import Details from '../pages/Details';
 import EditDetails from '../pages/EditDetails';
-
+import NotFound from '../pages/NotFound';
 
 export default function Router() {
     const router = createBrowserRouter([
@@ -55,6 +55,11 @@ export default function Router() {
           {
             path: "/edit/:id",
             element: <EditDetails />,
+          },
+          
+          {
+            path: "*",
+            element: <NotFound />,
           },
       ]);
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import Search from '../components/Search';
 import CardUser from '../components/CardUser';
@@ -17,22 +18,30 @@ export default function Users() {
     if (userData && role) {
       const parsedUserData = JSON.parse(userData);
       setLoggedInUserRole(role);
-      
     }
   }, []);
 
   useEffect(() => {
-    const apiUrl = loggedInUserRole === 'admin'
-      ? 'https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/admin'
-      : 'https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/student';
+    const fetchUsers = async () => {
+      try {
+        let apiUrl = '';
+        if (loggedInUserRole === 'admin') {
+          const response = await axios.get('https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/student');
+          setUsers(response.data);
+          setFilteredUsers(response.data); 
+        } else {
+          
+          apiUrl = 'https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/admin';
+          const response = await axios.get(apiUrl);
+          setUsers(response.data);
+          setFilteredUsers(response.data); 
+        }
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
 
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        setUsers(data);
-        setFilteredUsers(data);
-      })
-      .catch(error => console.error('Error fetching users:', error));
+    fetchUsers();
   }, [loggedInUserRole]);
 
   useEffect(() => {
@@ -46,6 +55,30 @@ export default function Users() {
     setSearchTerm(e.target.value);
   };
 
+  const handleDeleteUser = async (userId) => {
+    
+    const updatedUsers = filteredUsers.filter(user => user.id !== userId);
+    setFilteredUsers(updatedUsers);
+
+    try {
+    
+      const apiUrl = loggedInUserRole === 'admin'
+        ? `https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/student/${userId}`
+        : `https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/student/${userId}`;
+
+      const response = await axios.delete(apiUrl);
+
+      if (!response.status === 200) {
+        throw new Error(`Failed to delete user ${userId}.`);
+      }
+
+      console.log(`User ${userId} deleted successfully.`);
+
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
+
   return (
     <div>
       {loggedInUserRole === 'admin' ? <SidebarAdmin /> : <Sidebar />}
@@ -53,7 +86,12 @@ export default function Users() {
         <Search handleSearchChange={handleSearchChange} />
         <div className="flex flex-wrap my-9">
           {filteredUsers.map(user => (
-            <CardUser key={user.id} user={user} />
+            <CardUser
+              key={user.id}
+              user={user}
+              onDelete={handleDeleteUser}  
+              loggedInUserRole={loggedInUserRole}  
+            />
           ))}
         </div>
       </div>

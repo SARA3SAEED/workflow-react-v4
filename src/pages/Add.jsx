@@ -13,19 +13,39 @@ export default function Add() {
   const [adminError, setAdminError] = useState('');
 
   useEffect(() => {
-    if (formData.admin) {
-      fetchAdminDetails(formData.admin);
-    }
-  }, [formData.admin]);
+    // Fetch user data from localStorage on component mount
+    const fetchUserData = () => {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        try {
+          const parsedUserData = JSON.parse(userData);
+          if (parsedUserData && parsedUserData.id && parsedUserData.name) {
+            // Set initial form data with user's name
+            setFormData({ ...formData, name: parsedUserData.name });
+          } else {
+            throw new Error('Invalid user data format');
+          }
+        } catch (error) {
+          console.error('Error parsing user data:', error);
+        }
+      } else {
+        console.error('User data not found in localStorage');
+      }
+    };
+
+    fetchUserData();
+  }, []); // Empty dependency array ensures this effect runs only once
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      if (!managerName) {
+      if (!formData.admin) {
         throw new Error('Please enter a valid admin ID');
       }
 
+      // Proceed with form submission
+      const studentId = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).id : null;
       const projectData = {
         title: formData.subject,
         idea: formData.idea,
@@ -34,24 +54,50 @@ export default function Add() {
         studentName: formData.name,
         adminComment: '',
         managerId: formData.admin,
-        managerName: managerName,
-        createdAt: new Date().toISOString()
+        managerName: '',
+        createdAt: new Date().toISOString(),
+        studentId: studentId
       };
 
-      const apiUrl = 'https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/projects';
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(projectData),
-      });
+      // Fetch admin data
+      const apiUrl = `https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/admin/${formData.admin}`;
+      const response = await fetch(apiUrl);
 
       if (response.ok) {
-        const responseData = await response.json();
-        console.log('Project created successfully:', responseData);
+        const adminData = await response.json();
+        if (Array.isArray(adminData) && adminData.length > 0) {
+          projectData.managerName = adminData[0].name; // Assuming adminData is an array
+        } else if (adminData && adminData.name) {
+          projectData.managerName = adminData.name; // Assuming adminData is an object
+        } else {
+          throw new Error('Admin not found');
+        }
+
+        // Post project data
+        const postResponse = await fetch('https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/projects', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(projectData),
+        });
+
+        if (postResponse.ok) {
+          const responseData = await postResponse.json();
+          console.log('Project created successfully:', responseData);
+          // Optionally clear form data after successful submission
+          setFormData({
+            name: '',
+            subject: '',
+            idea: '',
+            admin: '',
+            task: ''
+          });
+        } else {
+          throw new Error('Failed to create project');
+        }
       } else {
-        throw new Error('Failed to create project');
+        throw new Error('Admin ID not found'); // Handle specific error message if needed
       }
     } catch (error) {
       console.error('Error creating project:', error);
@@ -61,31 +107,6 @@ export default function Add() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const fetchAdminDetails = async (adminId) => {
-    try {
-      const apiUrl = `https://667f2ad1f2cb59c38dc83ddc.mockapi.io/workflow/admin/${adminId}`;
-      const response = await fetch(apiUrl);
-
-      if (response.ok) {
-        const adminData = await response.json();
-        if (Array.isArray(adminData) && adminData.length > 0) {
-          setManagerName(adminData[0].name);
-        } else if (adminData && adminData.name) {
-          setManagerName(adminData.name);
-        } else {
-          throw new Error('Admin not found');
-        }
-        setAdminError('');
-      } else {
-        throw new Error('Failed to fetch admin details');
-      }
-    } catch (error) {
-      console.error('Error fetching admin details:', error);
-      setManagerName('');
-      setAdminError(error.message);
-    }
   };
 
   return (
