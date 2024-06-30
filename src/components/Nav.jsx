@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <header className="bg-teal-600 bg-opacity-10 py-4 w-full">
       <div className="container mx-auto flex justify-between items-center px-4">
-        <div className="w-32">
+        <div className="w-32 m-5">
           <Link to="/">
             <img src={imglogo} alt="TaskFlow logo" />
           </Link>
