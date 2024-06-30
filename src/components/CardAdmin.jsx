@@ -15,6 +15,8 @@ export default function CardAdmin({ project, handleProjectAction, handleDeletePr
         <h2 className="card-title">{project.title}</h2>
         <p>Student: {project.studentName}</p>
         <p>Status: {project.status}</p>
+        <p>Task: {project.task}</p>
+
         <div className="card-actions justify-end">
           {project.status === 'pending' && (
             <>

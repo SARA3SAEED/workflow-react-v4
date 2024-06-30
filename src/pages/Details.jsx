@@ -27,9 +27,6 @@ export default function Details() {
                 <Link to="/edit" className="btn w-44 bg-teal-400 bg-opacity-130 text-white py-2 px-4 rounded-md hover:bg-teal-800">
                   Edit
                 </Link>
-                <Link to="/edit" className="btn m-3 w-44 bg-base-900 bg-opacity-130 text-teal-900 py-2 px-4 rounded-md hover:text-white hover:bg-teal-800">
-                  Status
-                </Link>
               </div>
             </div>
           </div>

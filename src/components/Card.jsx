@@ -29,7 +29,8 @@ export default function Card({ project, handleProjectAction, handleDeleteProject
             </div>
             <h2 className="flex-auto text-lg font-medium">{project.title}</h2>
           </div>
-          <p className="mt-3">{project.task}</p>
+          <p className="mt-3 text-red-500 font-[300] text-lg">Student Name : {project.studentName}</p>
+          <p className="mt-3">Task : - {project.task}</p>
           <div className="flex py-4 text-sm text-gray-500">
             <div className='flex mr-9'>
               <img
@@ -59,13 +60,11 @@ export default function Card({ project, handleProjectAction, handleDeleteProject
           </div>
           <div className="flex p-2 pb-2 border-t border-gray-200"></div>
           <div className="flex space-x-3 text-sm font-medium">
-            <div className="flex-auto flex space-x-1">
-              <button className="mb-2 md:mb-0 bg-white px-4 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2">
+            <div className="flex-auto flex justify-end	 space-x-2">
+              <button className="mb-2 w-[20%] md:mb-0 bg-white px-7 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2">
                 <Link to={`/edit/${project.id}`}>Edit</Link>
               </button>
-              <button className="mb-2 md:mb-0 bg-white px-4 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2">
-                <Link to={`/details/${project.id}`}>Details</Link>
-              </button>
+          
               {project.status === 'Pending' && (
                 <>
                   <button
