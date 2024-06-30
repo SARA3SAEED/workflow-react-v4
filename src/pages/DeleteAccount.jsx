@@ -1,11 +1,10 @@
-// DeleteAccount.js
 
 import React from 'react';
 
 const DeleteAccount = ({ onDelete }) => {
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this student account?')) {
-      onDelete(); // Call onDelete function passed from parent component
+      onDelete(); 
     }
   };
 

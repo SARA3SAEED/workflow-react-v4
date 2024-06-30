@@ -4,7 +4,6 @@ export default function CardUser({ user, onDelete, loggedInUserRole }) {
   const isAdmin = loggedInUserRole === 'admin';
 
   const handleDelete = () => {
-    // Call onDelete function passed from parent component
     onDelete(user.id);
   };
 

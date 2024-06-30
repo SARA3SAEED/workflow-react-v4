@@ -32,7 +32,6 @@ export default function EditDetails() {
         });
       } catch (error) {
         console.error('Error fetching project data:', error);
-        // Handle error state or notify user
       }
     };
 
@@ -66,10 +65,8 @@ export default function EditDetails() {
       }
 
       console.log('Project data updated successfully!');
-      // Handle success, e.g., redirect to another page or show a success message
     } catch (error) {
       console.error('Error updating project data:', error);
-      // Handle error state or notify user
     }
   };
 

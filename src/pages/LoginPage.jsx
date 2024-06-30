@@ -29,13 +29,10 @@ export default function LoginPage() {
       const response = await fetch(apiUrl);
       if (response.ok) {
         const userData = await response.json();
-        // Find the user based on entered email and password match
         const user = userData.find(user => user.email === email && user.password === password);
         if (user) {
-          // Determine role based on user email
           const userRole = determineRole(email);
           
-          // Update localStorage with user and role
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('role', userRole);
     
@@ -51,18 +48,15 @@ export default function LoginPage() {
     const handleEmailChange = (e) => {
       const { value } = e.target;
       setEmail(value);
-      // Update role based on the entered email
       setRole(determineRole(value));
     };
     
 
-  // Function to clear localStorage
   const clearLocalStorage = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
   };
 
-  // Check if localStorage needs to be cleared on component mount
   if (localStorage.getItem('user') || localStorage.getItem('role')) {
     clearLocalStorage();
   }
