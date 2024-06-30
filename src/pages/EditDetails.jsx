@@ -65,6 +65,13 @@ export default function EditDetails() {
       }
 
       console.log('Project data updated successfully!');
+      setFormData({
+        studentName: null,
+        title: null,
+        idea: null,
+        task: null,
+        managerId: null
+      });
     } catch (error) {
       console.error('Error updating project data:', error);
     }
