@@ -12,18 +12,13 @@ export default function Nav() {
   return (
     <header className="bg-teal-600 bg-opacity-10 py-4 w-full">
       <div className="container mx-auto flex justify-between items-center px-4">
-        <div className="w-24">
+        <div className="w-32">
           <Link to="/">
             <img src={imglogo} alt="TaskFlow logo" />
           </Link>
         </div>
 
-        <nav className="hidden lg:flex">
-          <ul className="flex gap-4">
-            <li><Link to="/" className="text-sm font-semibold transition-colors duration-300 hover:text-teal-600">Home</Link></li>
-            <li><Link to="/dashbord" className="text-sm font-semibold transition-colors duration-300 hover:text-teal-600">Dashbord</Link></li>
-          </ul>
-        </nav>
+       
 
         <div className="hidden lg:flex items-center gap-4">
           <ul className="flex gap-4">
@@ -49,8 +44,6 @@ export default function Nav() {
       <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <nav>
           <ul className="flex flex-col mt-4 space-y-2">
-            <li><Link to="/" className="text-sm font-semibold transition-colors duration-300 hover:text-teal-600">Home</Link></li>
-            <li><Link to="/dashbord" className="text-sm font-semibold transition-colors duration-300 hover:text-teal-600">Dashbord</Link></li>
             <li><Link to="/login" className="text-sm font-semibold transition-colors duration-300 hover:text-teal-600">Login</Link></li>
             <li><Link className="text-sm font-semibold transition-colors duration-300 bg-teal-600 text-white py-2 px-4 rounded hover:bg-teal-700" to="/signup">Sign up</Link></li>
           </ul>
